@@ -21,5 +21,5 @@ unprivileged: 1
 ```
 apt update -y
 apt-get install curl -y
-wget -O - https://raw.githubusercontent.com/vitovts/proto/master/work/cogniteq/docker-lxc-init-1.sh | bash
+wget -O - https://raw.githubusercontent.com/vitovts/virtual/master/pve/docker-lxc-init.sh | bash
 ```
