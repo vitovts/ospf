@@ -25,3 +25,10 @@ vim /etc/fstab
   - NIC Realtek 8139 
 ```
 
+
+```
+pvecm status
+
+dpkg-reconfigure locales
+
+```
