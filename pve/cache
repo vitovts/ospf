@@ -1,0 +1,22 @@
+Cache
+
+https://pve.proxmox.com/wiki/Performance_Tweaks
+
+
+
+без аппаратного кеша (no RAID)
+- none - for *nix
+- windows - Write back (unsafe) 
+  - если с None поставить этот будет значительно лучше 
+
+
+
+аппаратный кеш
+
+- write back
+- directsync for x-SQL
+
+
+
+
+
