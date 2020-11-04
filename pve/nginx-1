@@ -1,0 +1,63 @@
+Proxy the Proxmox Web GUI with Nginx Over HTTPS with Load Balancing
+
+Redirect HTTP requests to use the HTTPS protocol.
+Add your own certificate to use for HTTPS.
+Listen on the standard HTTPS port (port 443).
+
+
+apt-get install nginx
+
+rm -f /etc/nginx/sites-enabled/default
+vi /etc/nginx/sites-enabled/proxmox-gui
+
+
+Add the below text to your proxmox-gui file. You will need to substitute some of the settings with your own values:
+
+    ssl_certificate – this should point to your SSL certificate to use for signing the SSL traffic.
+    ssl_certificate_key – is this key which matches the above certificate.
+    server – this is the IP and port of your Proxmox server. If you have installed Nginx on the same host as the Proxmox web GUI then you could use https://localhost:8006 here.
+
+upstream proxmox {
+    server 10.10.10.10:8006;
+}
+
+server {
+    listen 80 default_server;
+    rewrite ^(.*) https://$host$1 permanent;
+}
+
+server {
+    listen 443;
+    server_name _;
+    ssl on;
+    ssl_certificate /etc/nginx/ssl/cert.pem;
+    ssl_certificate_key /etc/nginx/ssl/key.pem;
+    proxy_redirect off;
+    location / {
+        proxy_pass https://proxmox;
+    }
+}
+
+If you have multiple Proxmox servers in a cluster, it would make sense to use load balancing in Nginx. We don’t really want to use this feature to spread the load, because usually the traffic will be very light – we want to use it so that if one node in the cluster is down, Nginx will automatically try a different node in the cluster.
+
+To add load balancing, add your additional servers in the upstream proxmox code section. For example:
+
+upstream proxmox {
+    server 10.10.10.10:8006;
+    server 10.10.10.11:8006;
+    server 10.10.10.12:8006;
+    }
+
+We need to link the newly created config file so that Nginx can load it.
+
+ln -sf /etc/nginx/sites-available/proxmox-gui /etc/nginx/sites-enabled/
+
+The last step is to restart Nginx web server to pick up the new settings.
+
+service nginx restart
+
+Your Proxmox web GUI should now be available on the IP address of your Nginx server on the HTTPS protocol.    
+    
+
+
+
