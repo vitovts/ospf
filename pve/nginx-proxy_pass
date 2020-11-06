@@ -1,5 +1,22 @@
 ngx_http_proxy_module
 
+URL: https://serveradmin.ru/nginx-proxy_pass/
+https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-debian-9-ru
+https://habr.com/ru/post/457894/
+https://pve.proxmox.com/wiki/Web_Interface_Via_Nginx_Proxy
+
+
+https://habr.com/ru/post/142363/
+https://www.jamescoyle.net/how-to/1522-proxy-the-proxmox-web-gui-with-nginx-over-https-with-load-balancing
+https://gist.github.com/baltpeter/3daf2469f972402b07ac
+https://gist.github.com/sergey-dryabzhinsky/2af5f7c56e1ee01ce128e04bf38ee99a
+https://www.jamescoyle.net/cheat-sheets/1078-openssl-certificate-cheat-sheet
+https://www.jamescoyle.net/how-to/1522-proxy-the-proxmox-web-gui-with-nginx-over-https-with-load-balancing
+https://forum.proxmox.com/threads/access-proxmox-via-nginx-reverse-proxy.33332/
+https://www.lowendtalk.com/discussion/159381/proxmox-setup-reverse-proxy-for-containers
+https://www.jamescoyle.net/how-to/1736-reverse-proxy-proxmox-vnc-with-nginx
+
+
 HTTP
 vim /etc/nginx/conf.d/blog.vitovts.ws.conf
 >>>
