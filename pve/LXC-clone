@@ -1,0 +1,38 @@
+Unable to clone LXC containers or templates, just spins
+
+CLI
+
+pveversion -v 
+
+# config for the LXC Container 
+pct config <VMID>.
+
+pct clone 100 999 --storage sas
+
+sent 5,725,513,842 bytes  received 617,691 bytes  42,259,273.31 bytes/sec
+total size is 5,944,285,737  speedup is 1.04
+malformed JSON string, neither tag, array, object, number, string or atom, at character offset 0 (before "(end of string)") at /usr/share/perl5/PVE/Tools.pm line 1003, <GEN6479> chunk 1.
+  Logical volume "vm-125-disk-0" successfully removed
+TASK ERROR: clone failed: interrupted by unexpected signal
+
+>>> syslog
+>>> dmesg
+
+[254303.773868] EXT4-fs (dm-41): mounted filesystem with ordered data mode. Opts: (null)
+[254446.366662] EXT4-fs (dm-41): mounted filesystem with ordered data mode. Opts: (null)
+[254810.066590] EXT4-fs (dm-18): mounted filesystem with ordered data mode. Opts: (null)
+[254810.080785] EXT4-fs (dm-41): mounted filesystem with ordered data mode. Opts: (null)
+[255006.494040] nfs: server 10.172.0.23 not responding, still trying
+
+
+Проблема с NFS  
+Восстановить и заработает
+или отключить и перезагрузка?
+
+
+
+
+
+
+
+
