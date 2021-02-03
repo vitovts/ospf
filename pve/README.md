@@ -1,12 +1,32 @@
 PVE
 
-- Configure network
+- Install
+```
+USB (Rufus) -> MBR,BIOS&UEFI,FAT32-> запись в режиме DD-образ
+```
+
+- Update
+```
+apt-get -y update
+apt-get -y upgrade
+apt install -y mc vim net-tools
+
+
+```
+
+
+- Network
 ```
 vim /etc/network/interfaces
-apt-get update
-apt-get upgrade
+
 apt-get install mc vim net-tools
-systemctl restart network
+systemctl restart networking
+# sudo /etc/init.d/networking restart
+or
+# sudo /etc/init.d/networking stop
+# sudo /etc/init.d/networking start
+else
+# sudo systemctl restart networking
 ```
 
 - Add hdd
