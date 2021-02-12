@@ -57,4 +57,13 @@ pvecm status
 
 dpkg-reconfigure locales
 
+
+lxc
+
+pct stop 114
+
+vm
+qm stop 114
+
+
 ```
